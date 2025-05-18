@@ -6,7 +6,7 @@ This is the backend server for StudyAI — a personal AI study companion that an
 
 ## Features
 
-- Accepts `.txt` file uploads containing study notes.
+- Accepts `.txt` or `.pdf` file uploads containing study notes.
 - Sends notes to an AI model to generate:
   - Summary
   - Flashcards
