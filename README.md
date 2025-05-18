@@ -1,33 +1,60 @@
-# StudyAI Backend (Express.js)
+# 📚 StudyAI Backend
 
-This is the backend server for StudyAI — a personal AI study companion that analyzes study notes and answers user questions using AI.
+This is the backend server for **StudyAI** — a personal AI study companion that analyzes uploaded study notes and provides:
 
----
-
-## Features
-
-- Accepts `.txt` or `.pdf` file uploads containing study notes.
-- Sends notes to an AI model to generate:
-  - Summary
-  - Flashcards
-  - Quiz questions with multiple choice answers
-- Provides a chat endpoint to answer user questions based on analyzed notes.
+- Summaries  
+- Flashcards  
+- Multiple-choice quizzes  
+- A chat-based question-answering interface
 
 ---
 
-## Requirements
+## 🚀 Features
 
-- Node.js (v16+ recommended)
+- Accepts `.txt` or `.pdf` file uploads
+- Sends notes to an AI model via Together API
+- Returns:
+  - A concise summary
+  - A set of flashcards
+  - Quiz questions with answer choices
+- Chat endpoint to ask follow-up questions about the document
+
+---
+
+## 📦 Requirements
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
 - npm or yarn
-- API key for Together AI (or another compatible AI provider)
+- API key for [Together AI](https://platform.together.xyz/)
 
 ---
 
-## Setup
+## ⚙️ Setup Instructions
 
-1. Clone the repo or copy the code.
-
-2. Install dependencies:
+### 1. Clone the repository
 
 ```bash
-npm install
+git clone https://github.com/your-username/studyai-backend.git
+cd studyai-backend
+```
+
+### 2. Install Dependencies
+
+```bash
+git clone https://github.com/your-username/studyai-backend.git
+cd studyai-backend
+```
+
+### 3. Configure environment variables
+
+Create a .env file in the project root and add your Together API key:
+```bash
+TOGETHER_API_KEY=your_together_api_key_here
+```
+
+### 🧪 Running the Server
+
+Create a .env file in the project root and add your Together API key:
+```bash
+node app.js
+```
