@@ -3,6 +3,7 @@ const multer = require('multer');
 const fs = require('fs');
 const axios = require('axios');
 const cors = require('cors');
+const pdfParse = require('pdf-parse'); // <-- Add this line
 require('dotenv').config();
 
 const app = express();
@@ -17,7 +18,19 @@ let lastDocumentText = '';
 app.post('/api/analyze', upload.single('file'), async (req, res) => {
      try {
           const filePath = req.file.path;
-          const fileText = fs.readFileSync(filePath, 'utf8');
+          let fileText = '';
+
+          // Detect PDF by mimetype or extension
+          if (
+               req.file.mimetype === 'application/pdf' ||
+               req.file.originalname.toLowerCase().endsWith('.pdf')
+          ) {
+               const dataBuffer = fs.readFileSync(filePath);
+               const pdfData = await pdfParse(dataBuffer);
+               fileText = pdfData.text;
+          } else {
+               fileText = fs.readFileSync(filePath, 'utf8');
+          }
           fs.unlinkSync(filePath);
 
           lastDocumentText = fileText;
